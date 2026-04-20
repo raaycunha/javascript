@@ -664,4 +664,76 @@ const suiteMaster = new SuiteMaster(5)
 
 quartoComum.fazerCheckIn(clienteRay)
 quartoComum.fazerCheckIn(clienteAna)
+
+class Funcionario {
+    static bussines = 'DevCorp Tecnologia'
+    constructor(name, salary, cargo) {
+        this.name = name
+        this.salary = salary
+        this.cargo = cargo
+        this._tasksCompleted = 0
+    }
+
+    set salary(value) {
+        this._salaryBase = value < 1412 ? 1412 : value
+    } 
+
+    get bonusAcumulado() {
+        return 0
+    }
+
+    get salaryTotal() {
+        const total = this._salaryBase + this.bonusAcumulado
+        return console.log(`${this.name} -> [${this.cargo}] -> Salario Final: ${total.toLocaleString('pt-BR', { 
+            style: 'currency',
+            currency: 'BRL'
+        })}`)
+    }
+
+    finalizarTarefa() {
+        this._tasksCompleted++
+        console.log(`${this.name} finalizou uma tarefa! Total: ${this._tasksCompleted}`)
+    }
+}
+
+class Desenvolvedor extends Funcionario {
+    constructor(name, salary) {
+        super(name, salary, 'Desenvolvedor')
+    }
+
+    get bonusAcumulado() {
+        return this._tasksCompleted * 500
+    }
+}
+
+class Gerente extends Funcionario {
+    constructor(name, salary) {
+        super(name, salary, 'Gerente')
+    }
+
+    get bonusAcumulado() {
+        return 2000
+    }
+}
+
+console.log(Funcionario.bussines)
+
+const desenvolvedorRay = new Desenvolvedor('Ray', 1200, 'Desenvolvedor')
+const gerenteAna = new Gerente('Ana', 2100, 'Gerente')
+console.log(desenvolvedorRay)
+console.log(gerenteAna)
+
+desenvolvedorRay.salaryTotal
+gerenteAna.salaryTotal
+
+desenvolvedorRay.finalizarTarefa()
+gerenteAna.finalizarTarefa()
+gerenteAna.finalizarTarefa()
+desenvolvedorRay.finalizarTarefa()
+
+console.log(desenvolvedorRay)
+console.log(gerenteAna)
+
+desenvolvedorRay.salaryTotal
+gerenteAna.salaryTotal
 */
