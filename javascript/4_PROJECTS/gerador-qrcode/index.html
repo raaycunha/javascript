@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR CODE</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <main id="mainContainer">
+        <section class="qrcode-form">
+            <div class="text-block">
+                <h1>Gerador de QR Code</h1>
+                <p>Insira uma URL ou texto, para criar um QR Code</p>
+            </div>
+            <div class="box-input">
+                <label for="inUrl"></label>
+                <input type="text" 
+                name="url" 
+                id="inUrl"
+                title="Digite a URL ou texto para criar seu QR Code"
+                placeholder="Digite a URL ou texto..."
+                required minlength="1">
+            </div>
+            <button id="btnQrCode" type="button">Gerar QR Code</button>
+        </section>
+        <section class="qrcode-img">
+        </section>
+    </main>
+</body>
+</html>

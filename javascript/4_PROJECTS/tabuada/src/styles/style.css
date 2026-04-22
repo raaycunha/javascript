@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+main.main-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+div.tabuada-container, div.res-tabuada {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    background-color: lightblue;
+    padding: 1rem;
+    border-radius: 15px;
+    max-width: 300px;
+}
+
+div.tabuada {
+    display: flex;
+    flex-flow: row;
+    gap: 2rem;
+}
+
+div.box-input {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+input[type="number"] {
+    width: 100%;
+    max-width: 50px;
+    padding: 0.6rem;
+}
+
+#btnCalcular {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 0.7rem;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: .6s;
+}
+
+#btnCalcular:hover {
+    transform: scale(98%);
+    background-color: rgba(0, 0, 0, 0.808);
+}
