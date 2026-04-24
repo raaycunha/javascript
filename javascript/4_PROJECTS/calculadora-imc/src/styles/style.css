@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #090E21;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #1E1E32;
+    padding: 2rem;
+    width: 100%;
+    max-width: 350px;
+}
+
+.main-container > h1 { 
+    text-align: center;
+    color: white; 
+    margin-bottom: 1.5rem;
+    font-size: 1.55rem;
+}
+
+.container-input, .box-input > label {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.box-input > label {
+    color: white;
+    font-weight: 550;
+    margin-bottom: 0.3rem;
+}
+
+.box-input > input {
+    width: 100%;
+    padding: 0.9rem;
+}
+
+.box-input > input:focus { outline: 1px solid #d3d3d3a6; }
+
+.container-button {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.container-button > button {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.8rem;
+}
+
+#btnCalculate,
+#btnClear,
+#btnBack {
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+#btnCalculate { background-color: #df3e359c; }
+#btnClear { background-color: #404042; }
+
+.res-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    color: white;
+    background-color: #1E1E32;
+    padding: 2rem;
+    width: 100%;
+    max-width: 350px;
+}
+
+p.situation {
+    color: lightgray;
+    font-weight: 550;
+}
+
+p.classif { font-weight: 550; }
+
+#situationUser,
+#imcUser {
+    color: #a0a03f;
+}
+
+.tabela-imc {
+    width: 100%;
+    color: white;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+}
+
+.tabela-imc th, .tabela-imc td {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid #838383;
+}
+
+.tabela-imc th {
+    font-weight: bold;
+}
+
+#btnBack {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #df3e359c;
+}
