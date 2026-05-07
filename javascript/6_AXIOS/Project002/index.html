@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIOS+APIs</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <main class="main-container">
+        <h2>Digite o ID do usuário que você procura.</h2>
+        <div class="box-input">
+            <label for="inIdUser">ID:</label>
+            <input type="text"
+            name="idUser"
+            id="inIdUser"
+            title="Digite o ID do usuário"
+            placeholder="Digite o ID do usuário"
+            required minlength="1">
+        </div>
+        <button id="btnSearch" type="submit">Buscar</button>
+        <section class="container-card-user">
+        </section>
+    </main>
+    <section class="second-container">
+        <h2>Digite o titulo e conteúdo do seu Post.</h2>
+        <div class="box-input">
+            <label for="inTitleUser">Titulo:</label>
+            <input type="text"
+            name="titleUser"
+            id="inTitleUser"
+            title="Digite o Titulo do post"
+            placeholder="Digite o Titulo do post"
+            required minlength="1">
+        </div>
+        <div class="box-input">
+            <label for="inContentUser">Conteúdo:</label>
+            <input type="text"
+            name="contentUser"
+            id="inContentUser"
+            title="Digite o Contéudo do post"
+            placeholder="Digite o Contéudo do post"
+            required minlength="1">
+        </div>
+        <button id="btnPost" type="submit">Postar</button>
+        <section class="container-card-post">
+        </section>
+    </section>
+</body>
+</html>

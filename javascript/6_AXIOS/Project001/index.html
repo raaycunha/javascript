@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIOS + API</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <main class="main-container">
+    </main>
+    <section class="second-container">
+        <form id="frm">
+            <div class="box-input">
+                <label for="inTitle">Titulo</label>
+                <input type="text"
+                name="title"
+                id="inTitle"
+                placeholder="Digite o titulo"
+                title="Digite o titulo"
+                required minlength="1">
+            </div>
+            <div class="box-input">
+                <label for="inContent">Conteúdo</label>
+                <input type="text"
+                name="content"
+                id="inContent"
+                placeholder="Digite o conteúdo"
+                title="Digite o conteúdo"
+                required minlength="1">
+            </div>
+            <button id="btnSubmit" type="submit">Enviar</button>
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Força de Senha</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <main class="main-container">
+        <div class="text-block">
+            <h1>Verificador de Força de Senha</h1>
+            <p>Insira uma senha para verificar sua força</p>
+        </div>
+        <div class="box-input">
+            <label aria-label="Digite sua senha" for="inPass"></label>
+            <input type="password" 
+            name="pass" 
+            id="inPass"
+            title="Digite sua senha"
+            placeholder="Digite sua senha"
+            required minlength="1">
+            <div class="container-strength-bar">
+                <div id="strengthBar">
+                    <div class="color-bar"></div>
+                </div>
+                <span class="res-pass">Forte</span>
+            </div>
+        </div>
+        <small><i>Sua senha precisa conter letras minúsculas e maiúsculas, números e caracteres especiais</i></small>
+    </main>
+</body>
+</html>
