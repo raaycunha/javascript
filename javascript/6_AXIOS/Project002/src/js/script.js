@@ -55,6 +55,9 @@ class ApiGetHtml {
 
         btnConfirm.addEventListener('click', () => {
             boxInfo.classList.toggle('finished')
+            if (boxInfo.classList.contains('finished')) {
+                btnConfirm.textContent = 'Desmarcar'
+            } else btnConfirm.textContent = 'Finalizar'
         })
 
         btnDelete.addEventListener('click', () => {
