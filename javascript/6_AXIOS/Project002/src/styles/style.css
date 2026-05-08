@@ -15,6 +15,7 @@ body {
     justify-content: center;
 }
 
+.container-search-filter,
 .main-container,
 .second-container {
     display: flex;
