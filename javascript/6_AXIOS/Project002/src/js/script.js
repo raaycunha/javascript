@@ -80,8 +80,23 @@ class GetComponent {
 
             boxInfo.classList.toggle('finished')
             if (boxInfo.classList.contains('finished')) {
-                btnConfirm.textContent = 'Desmarcar'
-            } else btnConfirm.textContent = 'Finalizar'
+                btnConfirm.disabled = true
+                btnConfirm.textContent = 'Marcando...'
+
+                // Efeito de botão desativado e carregando e voltando o botão ao normal após 1/2 segundo
+                setTimeout(() => {
+                    btnConfirm.disabled = false
+                    btnConfirm.textContent = 'Desmarcar'
+                }, 500)
+            } else {
+                btnConfirm.disabled = true
+                btnConfirm.textContent = 'Desmarcando...'
+
+                 setTimeout(() => {
+                    btnConfirm.disabled = false
+                    btnConfirm.textContent = 'Marcar'
+                }, 500)
+            }
 
             const isChecked = boxInfo.classList.contains('finished')
             if (isChecked) {
@@ -98,7 +113,13 @@ class GetComponent {
             // Apagando o Card após o evento de clique (Excluir)
             const index = idsSearched.findIndex(item => item.id === idUser)
             if (index !== -1) {
-                boxCard.remove()
+                btnDelete.disabled = true
+                btnDelete.textContent = 'Excluindo...'
+
+                setTimeout(() => {
+                    boxCard.remove()
+                }, 500)
+
                 idsSearched.splice(index, 1)
                 localStorage.setItem('cards', JSON.stringify(idsSearched))
             }
@@ -234,6 +255,7 @@ class PostComponent {
                     if (index !== -1) {
                         boxPost.remove()
                         dataPost.splice(index, 1)
+                        idPost--
                         localStorage.setItem('dataPost', JSON.stringify(dataPost))
                     }
                 }
@@ -294,7 +316,32 @@ btnPost.addEventListener('click', async () => {
 })
 
 dataPost.forEach(data => {
-    // Caso exista algum dado no LocalStorage fazer o loop e criar o Html
+    // Caso exista algum dado no LocalStorage ele vai fazer o loop e criar o Html
     const newPost = new PostComponent(data.responseApi, data.id)
     newPost.postHtml(containerCardPost)
 });
+
+// Filtro de busca: Filtrando os posts e mostrando os que o usuário pesquisar
+
+const inputSearch = document.querySelector('#inFilter')
+
+inputSearch.addEventListener('input', () => {
+    const term = inputSearch.value.trim()
+    try {
+        // Regex com o titulo que o usuario escrever. ^ Esse simbolo verifica se a primeira letra é igual a do titulo pesquisado
+        const regexTerm = new RegExp(`^${term}`, 'i')
+        const allCardPost = document.querySelectorAll('.card-post')
+        
+        // Loop para verificar cada card
+        allCardPost.forEach(card => {
+            // Pega o titulo do card atual para verificar com o titulo da barra de pesquisa
+            const title = card.querySelector('h3').textContent
+
+            if (regexTerm.test(title)) {
+                card.style.display = 'flex'
+            } else card.style.display = 'none'
+        })
+    } catch(err) {
+        console.warn('Termo de busca inválido.', err)
+    }
+})
