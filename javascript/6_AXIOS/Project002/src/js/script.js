@@ -70,6 +70,7 @@ class GetComponent {
         boxCard.append(boxInfo, boxBtn)
         container.append(boxCard)
 
+        // Pega o indice do ID atual e verifica o estado de marcação no LocalStorage, se estiver verdadeiro ele fica marcado
         const index = idsSearched.findIndex(item => item.id === idUser)
         if (index !== -1 && idsSearched[index].checked === true) {
             boxInfo.classList.add('finished')
@@ -77,7 +78,6 @@ class GetComponent {
 
         btnConfirm.addEventListener('click', () => {
             // Efeito de marcação em cima dos dados do user após o evento de clique (Finalizar/Desmarcar)
-
             boxInfo.classList.toggle('finished')
             if (boxInfo.classList.contains('finished')) {
                 btnConfirm.disabled = true
@@ -139,10 +139,10 @@ btnSearch.addEventListener('click', async (e) => {
     
     const idUser = Number(cleanInput)
 
-    // Verificando apartir da Array do LocalStorage se esse user já está na tela (Manipulação de Arrays)
+    // Verificando apartir da Array do LocalStorage se esse user já foi buscado (Manipulação de Arrays)
     const idExists = idsSearched.some(item => item.id === idUser)
     if (idExists) {
-        // Se o user está na tela: Alertar
+        // Se o user já foi buscado: Alertar
         alert(`O usuário com o ID [${idUser}] já foi carregado.`) 
         idUserInput.value = ''
         idUserInput.focus()
@@ -250,11 +250,14 @@ class PostComponent {
         btnEdit.addEventListener('click', async () => {
             const isEditing = boxPost.classList.contains('editing')
 
+            // Verifica se o botão não está em modo edição (Class 'editing').
             if (!isEditing) {
-                // Modo Edição
+                // Entra no Modo Edição
+                // Class adicionada, para quando o botão for clicado novamente cair no else e sair do Modo Edição
                 boxPost.classList.add('editing')
                 btnEdit.textContent = 'Salvar'
 
+                // Transforma titulo e conteúdo em  input/textarea para o usuario editar
                 const inputTitle = document.createElement('input')
                 inputTitle.value = titlePost.textContent
                 titlePost.replaceWith(inputTitle)
@@ -264,9 +267,10 @@ class PostComponent {
                 contentPost.replaceWith(inputBody)
 
                 // Botão para caso ele não queira mais editar e voltar da forma que estava
-                
+                // Pega o botão Return no container de botões
                 let btnReturn = boxBtn.querySelector('.btn-return')
 
+                // O botão so é criado se ele não existir. Evitando botão duplicado
                 if (!btnReturn) {
                     btnReturn = document.createElement('button')
                     btnReturn.classList.add('btn-return')
@@ -274,9 +278,11 @@ class PostComponent {
                     boxBtn.append(btnReturn, btnDelete)
                 }
 
+                // Quando entrar em modo edição ele vai ser mostrado
                 btnReturn.style.display = 'inline-block'; 
 
                 btnReturn.onclick = () => {
+                    // Esconde o botão, sai do modo edição e desfaz alterações
                     boxPost.classList.remove('editing')
                     btnReturn.style.display = 'none'
                     btnEdit.textContent = 'Editar'
@@ -288,6 +294,7 @@ class PostComponent {
                 }
             } else {
                 // Saindo do Modo Edição e salvando mudanças
+                // Class removida, para quando o botão for clicado novamente cair no if e entrar no Modo Edição
                 boxPost.classList.remove('editing')
 
                 btnEdit.disabled = true
@@ -319,6 +326,7 @@ class PostComponent {
                     }
                 } catch (err) {
                     alert('Erro ao salvar edição!')
+                    console.error('Erro detalhado:', err)
                 } finally {
                     btnEdit.disabled = false
                     btnEdit.textContent = 'Editar'
@@ -385,14 +393,13 @@ btnPost.addEventListener('click', async () => {
                 id: idPost
             })
             localStorage.setItem('dataPost', JSON.stringify(dataPost))
-
             idPost++
         }
     } catch(err) {
-        console.log('Erro ao Postar conteúdo:', err)
-        alert('Erro ao Postar conteúdo:', err)
+        console.error('Erro detalhado:', err)
+        alert('Erro ao postar conteúdo:', err)
     } finally {
-        // API dando erro ou não o botão volta ao normal no final
+        // API dando erro ou não o botão volta ao normal
         btnPost.disabled = false
         btnPost.textContent = 'Postar'
         limparInput()
