@@ -347,7 +347,6 @@ class PostComponent {
                     if (index !== -1) {
                         boxPost.remove()
                         dataPost.splice(index, 1)
-                        idPost--
                         localStorage.setItem('dataPost', JSON.stringify(dataPost))
                     }
                 }
