@@ -70,6 +70,7 @@ class GetComponent {
         boxCard.append(boxInfo, boxBtn)
         container.append(boxCard)
 
+        // Pega o indice do ID atual e verifica o estado de marcação no LocalStorage, se estiver verdadeiro ele fica marcado
         const index = idsSearched.findIndex(item => item.id === idUser)
         if (index !== -1 && idsSearched[index].checked === true) {
             boxInfo.classList.add('finished')
@@ -77,7 +78,6 @@ class GetComponent {
 
         btnConfirm.addEventListener('click', () => {
             // Efeito de marcação em cima dos dados do user após o evento de clique (Finalizar/Desmarcar)
-
             boxInfo.classList.toggle('finished')
             if (boxInfo.classList.contains('finished')) {
                 btnConfirm.disabled = true
@@ -139,10 +139,10 @@ btnSearch.addEventListener('click', async (e) => {
     
     const idUser = Number(cleanInput)
 
-    // Verificando apartir da Array do LocalStorage se esse user já está na tela (Manipulação de Arrays)
+    // Verificando apartir da Array do LocalStorage se esse user já foi buscado (Manipulação de Arrays)
     const idExists = idsSearched.some(item => item.id === idUser)
     if (idExists) {
-        // Se o user está na tela: Alertar
+        // Se o user já foi buscado: Alertar
         alert(`O usuário com o ID [${idUser}] já foi carregado.`) 
         idUserInput.value = ''
         idUserInput.focus()
@@ -233,15 +233,107 @@ class PostComponent {
         const postId = document.createElement('span')
         postId.textContent = this.id
 
+        const btnEdit = document.createElement('button')
+        btnEdit.textContent = 'Editar'
+        btnEdit.classList.add('btn-edit')
+
         const btnDelete = document.createElement('button')
         btnDelete.textContent = 'Excluir'
         btnDelete.classList.add('btn-delete')
 
         infoPost.append(titlePost, contentPost)
         small.append(postId)
-        boxBtn.append(small, btnDelete)
+        boxBtn.append(small, btnEdit, btnDelete)
         boxPost.append(infoPost, boxBtn)
         container.append(boxPost)
+
+        btnEdit.addEventListener('click', async () => {
+            const isEditing = boxPost.classList.contains('editing')
+
+            // Verifica se o botão não está em modo edição (Class 'editing').
+            if (!isEditing) {
+                // Entra no Modo Edição
+                // Class adicionada, para quando o botão for clicado novamente cair no else e sair do Modo Edição
+                boxPost.classList.add('editing')
+                btnEdit.textContent = 'Salvar'
+
+                // Transforma titulo e conteúdo em  input/textarea para o usuario editar
+                const inputTitle = document.createElement('input')
+                inputTitle.value = titlePost.textContent
+                titlePost.replaceWith(inputTitle)
+
+                const inputBody = document.createElement('textarea')
+                inputBody.value = contentPost.textContent
+                contentPost.replaceWith(inputBody)
+
+                // Botão para caso ele não queira mais editar e voltar da forma que estava
+                // Pega o botão Return no container de botões
+                let btnReturn = boxBtn.querySelector('.btn-return')
+
+                // O botão so é criado se ele não existir. Evitando botão duplicado
+                if (!btnReturn) {
+                    btnReturn = document.createElement('button')
+                    btnReturn.classList.add('btn-return')
+                    btnReturn.textContent = 'Cancelar'
+                    boxBtn.append(btnReturn, btnDelete)
+                }
+
+                // Quando entrar em modo edição ele vai ser mostrado
+                btnReturn.style.display = 'inline-block'; 
+
+                btnReturn.onclick = () => {
+                    // Esconde o botão, sai do modo edição e desfaz alterações
+                    boxPost.classList.remove('editing')
+                    btnReturn.style.display = 'none'
+                    btnEdit.textContent = 'Editar'
+                    // Retorna o Titulo e Conteúdo para a forma que estava antes da edição
+                    titlePost.textContent = this.title
+                    contentPost.textContent = this.body
+                    inputTitle.replaceWith(titlePost)
+                    inputBody.replaceWith(contentPost)
+                }
+            } else {
+                // Saindo do Modo Edição e salvando mudanças
+                // Class removida, para quando o botão for clicado novamente cair no if e entrar no Modo Edição
+                boxPost.classList.remove('editing')
+
+                btnEdit.disabled = true
+                btnEdit.textContent = 'Salvando...'
+
+                const btnReturn = boxBtn.querySelector('.btn-return')
+
+                const newTitle = boxPost.querySelector('input')
+                const newBody = boxPost.querySelector('textarea')
+
+                const dataUpdate = {
+                    title: newTitle.value,
+                    body: newBody.value
+                }
+
+                try {
+                    const response = await ApiData.updateData(this.id, dataUpdate)
+
+                    if (response.status >= 200 && response.status < 300) {
+
+                        titlePost.textContent = newTitle.value
+                        contentPost.textContent = newBody.value
+                        newTitle.replaceWith(titlePost)
+                        newBody.replaceWith(contentPost)
+
+                        const index = dataPost.findIndex(p => p.id === this.id)
+                        dataPost[index].responseApi = { ...dataUpdate, id: this.id }
+                        localStorage.setItem('dataPost', JSON.stringify(dataPost))
+                    }
+                } catch (err) {
+                    alert('Erro ao salvar edição!')
+                    console.error('Erro detalhado:', err)
+                } finally {
+                    btnEdit.disabled = false
+                    btnEdit.textContent = 'Editar'
+                    btnReturn.style.display = 'none'
+                }
+            }
+        })
 
         btnDelete.addEventListener('click', async () => {
             try {
@@ -297,18 +389,17 @@ btnPost.addEventListener('click', async () => {
 
             dataPost.push({
                 // Enviando os dados do Post pra Array
-                responseApi: response,
+                responseApi: response.data,
                 id: idPost
             })
             localStorage.setItem('dataPost', JSON.stringify(dataPost))
-
             idPost++
         }
     } catch(err) {
-        console.log('Erro ao Postar conteúdo:', err)
-        alert('Erro ao Postar conteúdo:', err)
+        console.error('Erro detalhado:', err)
+        alert('Erro ao postar conteúdo:', err)
     } finally {
-        // API dando erro ou não o botão volta ao normal no final
+        // API dando erro ou não o botão volta ao normal
         btnPost.disabled = false
         btnPost.textContent = 'Postar'
         limparInput()
