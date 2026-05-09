@@ -233,15 +233,99 @@ class PostComponent {
         const postId = document.createElement('span')
         postId.textContent = this.id
 
+        const btnEdit = document.createElement('button')
+        btnEdit.textContent = 'Editar'
+        btnEdit.classList.add('btn-edit')
+
         const btnDelete = document.createElement('button')
         btnDelete.textContent = 'Excluir'
         btnDelete.classList.add('btn-delete')
 
         infoPost.append(titlePost, contentPost)
         small.append(postId)
-        boxBtn.append(small, btnDelete)
+        boxBtn.append(small, btnEdit, btnDelete)
         boxPost.append(infoPost, boxBtn)
         container.append(boxPost)
+
+        btnEdit.addEventListener('click', async () => {
+            const isEditing = boxPost.classList.contains('editing')
+
+            if (!isEditing) {
+                // Modo Edição
+                boxPost.classList.add('editing')
+                btnEdit.textContent = 'Salvar'
+
+                const inputTitle = document.createElement('input')
+                inputTitle.value = titlePost.textContent
+                titlePost.replaceWith(inputTitle)
+
+                const inputBody = document.createElement('textarea')
+                inputBody.value = contentPost.textContent
+                contentPost.replaceWith(inputBody)
+
+                // Botão para caso ele não queira mais editar e voltar da forma que estava
+                
+                let btnReturn = boxBtn.querySelector('.btn-return')
+
+                if (!btnReturn) {
+                    btnReturn = document.createElement('button')
+                    btnReturn.classList.add('btn-return')
+                    btnReturn.textContent = 'Cancelar'
+                    boxBtn.append(btnReturn, btnDelete)
+                }
+
+                btnReturn.style.display = 'inline-block'; 
+
+                btnReturn.onclick = () => {
+                    boxPost.classList.remove('editing')
+                    btnReturn.style.display = 'none'
+                    btnEdit.textContent = 'Editar'
+                    // Retorna o Titulo e Conteúdo para a forma que estava antes da edição
+                    titlePost.textContent = this.title
+                    contentPost.textContent = this.body
+                    inputTitle.replaceWith(titlePost)
+                    inputBody.replaceWith(contentPost)
+                }
+            } else {
+                // Saindo do Modo Edição e salvando mudanças
+                boxPost.classList.remove('editing')
+
+                btnEdit.disabled = true
+                btnEdit.textContent = 'Salvando...'
+
+                const btnReturn = boxBtn.querySelector('.btn-return')
+
+                const newTitle = boxPost.querySelector('input')
+                const newBody = boxPost.querySelector('textarea')
+
+                const dataUpdate = {
+                    title: newTitle.value,
+                    body: newBody.value
+                }
+
+                try {
+                    const response = await ApiData.updateData(this.id, dataUpdate)
+
+                    if (response.status >= 200 && response.status < 300) {
+
+                        titlePost.textContent = newTitle.value
+                        contentPost.textContent = newBody.value
+                        newTitle.replaceWith(titlePost)
+                        newBody.replaceWith(contentPost)
+
+                        const index = dataPost.findIndex(p => p.id === this.id)
+                        dataPost[index].responseApi = { ...dataUpdate, id: this.id }
+                        localStorage.setItem('dataPost', JSON.stringify(dataPost))
+                    }
+                } catch (err) {
+                    alert('Erro ao salvar edição!')
+                } finally {
+                    btnEdit.disabled = false
+                    btnEdit.textContent = 'Editar'
+                    btnReturn.style.display = 'none'
+                }
+            }
+        })
 
         btnDelete.addEventListener('click', async () => {
             try {
@@ -297,7 +381,7 @@ btnPost.addEventListener('click', async () => {
 
             dataPost.push({
                 // Enviando os dados do Post pra Array
-                responseApi: response,
+                responseApi: response.data,
                 id: idPost
             })
             localStorage.setItem('dataPost', JSON.stringify(dataPost))

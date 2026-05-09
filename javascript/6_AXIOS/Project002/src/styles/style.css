@@ -69,7 +69,10 @@ input { width: 100%; }
     text-align: center;
 }
 
+.btn-return { cursor: pointer }
+
 .btn-confirm,
+.btn-edit,
 .btn-delete {
     width: 80px;
     height: 30px;
