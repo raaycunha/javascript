@@ -58,7 +58,7 @@ class GetComponent {
         boxBtn.classList.add('btn-card')
 
         const btnConfirm = document.createElement('button')
-        btnConfirm.textContent = 'Finalizar'
+        btnConfirm.textContent = 'Marcar'
         btnConfirm.classList.add('btn-confirm')
 
         const btnDelete = document.createElement('button')
@@ -74,6 +74,7 @@ class GetComponent {
         const index = idsSearched.findIndex(item => item.id === idUser)
         if (index !== -1 && idsSearched[index].checked === true) {
             boxInfo.classList.add('finished')
+            btnConfirm.textContent = 'Desmarcar'
         }
 
         btnConfirm.addEventListener('click', () => {
@@ -106,6 +107,9 @@ class GetComponent {
                     idsSearched.splice(index, 1, { ...idsSearched[index], checked: true })
                     localStorage.setItem('cards', JSON.stringify(idsSearched))
                 }
+            } else {
+                idsSearched.splice(index, 1, { ...idsSearched[index], checked: false })
+                localStorage.setItem('cards', JSON.stringify(idsSearched))
             }
         })
 
