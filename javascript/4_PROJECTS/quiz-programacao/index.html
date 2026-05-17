@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Programação</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <header class="header-container">
+        <h1>QUIZ DE PROGRAMAÇÃO</h1>
+    </header>
+    <main class="main-container">
+        <section class="menu-container">
+            <h2>Vamos testar seus conhecimentos?</h2>
+            <button id="btnStart">Iniciar Quiz</button>
+        </section>
+        <section class="container-quiz">
+            <div class="first-quiz quiz">
+                <h3>1- PHP foi desenvolvido para qual fim?</h3>
+                <div class="list-quiz">
+                    <p class="option correct"><span class="letter-quiz">A</span>Back-End</p>
+                    <p class="option"><span class="letter-quiz">B</span>Front-End</p>
+                    <p class="option"><span class="letter-quiz">C</span>Sistema Operacional</p>
+                    <p class="option"><span class="letter-quiz">D</span>Banco de Dados</p>
+                </div>
+            </div>
+            <div class="second-quiz quiz">
+                <h3>2- Uma forma de declarar variável em JavaScript é:</h3>
+                <div class="list-quiz">
+                    <p class="option"><span class="letter-quiz">A</span>$var</p>
+                    <p class="option correct"><span class="letter-quiz">B</span>var</p>
+                    <p class="option"><span class="letter-quiz">C</span>#let</p>
+                    <p class="option"><span class="letter-quiz">D</span>@const</p>
+                </div>
+            </div>
+            <div class="third-quiz quiz">
+                <h3>3- Qual o seletor de ID no CSS?</h3>
+                <div class="list-quiz">
+                    <p class="option correct"><span class="letter-quiz">A</span>#</p>
+                    <p class="option"><span class="letter-quiz">B</span>.</p>
+                    <p class="option"><span class="letter-quiz">C</span>@</p>
+                    <p class="option"><span class="letter-quiz">D</span>/</p>
+                </div>
+            </div>
+        </section>
+        <section class="container-finally">
+            <h3>Parabéns!</h3>
+            <p id="porcentQuiz">33,33%</p>
+            <p>Você acertou <span id="hitsQuiz">3 de 3</span> quiz.</p>
+            <button id="btnRestart">Refazer Quiz</button>
+        </section>
+    </main>
+</body>
+</html>

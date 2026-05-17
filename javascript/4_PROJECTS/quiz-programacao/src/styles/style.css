@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #1c2130eb;
+}
+
+.header-container {
+    text-align: center;
+    background-color: #232a40e0;
+    padding: 1rem;
+    font-size: 0.7rem;
+    color: white;
+    box-shadow: 1px 1px 7px #0000001e;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    color: white;
+}
+
+#btnStart {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #232a40e0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 0px #0000001e;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: 0.6s ease;
+}
+
+#btnStart:hover {
+    background-color: #bdbdbd;
+    transform: scale(98%);
+}
+
+.container-quiz {
+    display: none;
+    background-color: #232a40e0;
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.quiz { display: none; }
+
+.list-quiz { 
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem; 
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    box-shadow: 1px 1px 5px #00000054;
+    color: black;
+    font-weight: bold;
+    background-color: #ffffffe0;
+    padding: 0.3rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.option:hover {
+    opacity: 0.7;
+    transform: scale(98%);
+}
+
+.letter-quiz {
+    background-color: #ffa600;
+    border-radius: 10px;
+    padding: 0.3rem;
+    color: white;
+}
+
+.container-finally { 
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #232a40e0;
+    padding: 2rem;
+    border-radius: 20px;
+    color: white;
+}
+
+#porcentQuiz { 
+    font-size: 1.2rem; 
+    font-weight: bold;
+}
+
+#btnRestart {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #232a40e0;
+    border: none;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 0px #0000001e;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: 0.6s ease;
+}
+
+#btnRestart:hover {
+    background-color: #bdbdbd;
+    transform: scale(98%);
+}
+
+.is-incorrect { background-color: red; } 
+.is-correct { background-color: green; }
