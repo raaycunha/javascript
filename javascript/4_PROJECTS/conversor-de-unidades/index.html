@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Unidades</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <main class="main-container">
+        <header class="header-container">
+            <h2>Conversor de Unidades</h2>
+        </header>
+        <div class="box-input">
+            <label for="inQuantity">Digite a quantidade:</label>
+            <input type="number" 
+            name="quantity" 
+            id="inQuantity"
+            placeholder="0"
+            title="Digite a quantidade"
+            required minlength="1">
+        </div>
+        <div class="box-input">
+            <label for="inUnit">De:</label>
+            <select name="unit" id="inUnit">
+                <option data-name="Metro(s)" value="m" selected>Metro(s)</option>
+                <option data-name="Quilômetro(s)" value="km">Quilômetro(s)</option>
+                <option data-name="Centímetro(s)" value="cm">Centímetro(s)</option>
+                <option data-name="Milímetro(s)" value="mm">Milímetro(s)</option>
+            </select>
+        </div>
+        <div class="box-input">
+            <label for="inConvert">Para:</label>
+            <select name="convert" id="inConvert">
+                <option data-name="Metro(s)" value="m">Metro(s)</option>
+                <option data-name="Quilômetro(s)" value="km" selected>Quilômetro(s)</option>
+                <option data-name="Centímetro(s)" value="cm">Centímetro(s)</option>
+                <option data-name="Milímetro(s)" value="mm">Milímetro(s)</option>
+            </select>
+        </div>
+        <button id="btnConvert">Converter</button>
+        <div class="container-resp">
+            <p>Resultado:</p>
+            <div class="resp-convert"></div>
+        </div>
+    </main>
+</body>
+</html>
