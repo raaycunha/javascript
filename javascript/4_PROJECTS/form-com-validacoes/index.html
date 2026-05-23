@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario com Validações</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <form id="frm" autocomplete="on" method="get">
+        <h1>Formulário de Contato</h1>
+        <div class="box-input">
+            <label for="inName">Nome</label>
+            <input data-type="name"
+            class="input-form" 
+            type="text"
+            name="nameUser" 
+            id="inName"
+            title="Digite seu nome"
+            placeholder="Digite seu nome.."
+            required minlength="1">
+            <span class="warning"></span>
+        </div>
+        <div class="box-input">
+            <label for="inEmail">Email</label>
+            <input data-type="email"
+            class="input-form" 
+            type="email" 
+            name="email" 
+            id="inEmail"
+            title="Digite seu e-mail"
+            placeholder="Digite seu e-mail.."
+            required minlength="1">
+            <span class="warning"></span>
+        </div>
+        <div class="box-input">
+            <label for="inTopic">Assunto</label>
+            <input data-type="subject"
+            class="input-form" 
+            type="text" 
+            name="topic" 
+            id="inTopic"
+            title="Digite o assunto"
+            placeholder="Digite o assunto.."
+            required minlength="1">
+            <span class="warning"></span>
+        </div>
+        <div class="box-input">
+            <label for="inMsg">Mensagem</label>
+           <textarea data-type="message"
+           class="input-form"
+           name="msg" 
+           id="inMsg"
+           title="Digite sua mensagem"
+           placeholder="Digite sua mensagem.."
+           required minlength="1"></textarea>
+           <span class="warning"></span>
+        </div>
+        <button id="btnSubmit" type="submit">Enviar</button>
+    </form>
+</body>
+</html>
