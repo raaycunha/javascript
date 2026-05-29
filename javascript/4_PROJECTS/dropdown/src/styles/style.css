@@ -1,0 +1,122 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif; 
+    min-height: 200vh;
+}
+
+.header-container { background-color: #222 }
+
+#menu {
+    display: flex;
+    gap: 1rem;
+}
+
+#menu > a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+#menu > a:hover,
+.btn-dropdown:hover,
+.btn-dropdown-content:hover {
+    background-color: #050505;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-dropdown {
+    background-color: #222;
+    color: white;
+    padding: 16px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-dropdown-content {
+    text-align: left;
+    padding-left: 0.4rem;
+    background-color: #222;
+    font-size: 0.9rem;
+    padding: 0.4rem;
+    color: white;
+    min-width: 97px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #222;
+    min-width: 97px;
+    font-size: 0.9rem;
+    box-shadow: 0px 8px 8px #0000007d;
+    z-index: 1;
+}
+
+.submodule-content {
+    position: absolute;
+    transform: translate(6rem, -1.85rem);
+    display: none;
+    position: absolute;
+    background-color: #222;
+    min-width: 97px;
+    font-size: 0.9rem;
+    box-shadow: 0px 8px 8px #0000007d;
+    z-index: 2;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 0.4rem;
+    text-decoration: none;
+    display: block;
+}
+
+.submodule-content a {
+    color: white;
+    padding: 0.47rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #050505;
+}
+
+.dropdown:hover .dropdown-content,
+.submodule:hover .submodule-content {
+    display: block;
+}
+
+#btnBack {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: none;
+    background-color: #222;
+    color: white;
+    padding: 0.6rem;
+    font-family: Verdana, Tahoma, sans-serif;
+    cursor: pointer;
+    transition: opacity .4s;
+}
+
+#btnBack:hover {
+    opacity: 0.9;
+}
