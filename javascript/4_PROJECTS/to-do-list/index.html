@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Avançado</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <main class="main-container">
+        <header class="header-container">
+            <h1>To-do Avançado</h1>
+        </header>
+        <section class="container-features">
+            <div class="box-task">
+                <label for="inTask">Adicione sua tarefa</label>
+                <div class="abbreviation">
+                    <input type="text"
+                    name="task"
+                    id="inTask"
+                    placeholder="O que você vai fazer?"
+                    title="Digite sua tarefa"
+                    required minlength="1">
+                    <button id="btnAdd" type="submit">
+                        <i class="fa-thin fa-plus"></i>
+                    </button>
+                    <button id="btnConfirm" style="display: none;">
+                        <i class="fa-solid fa-check-double"></i>
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="box-filters">
+                <div class="box-filter">
+                    <label for="inSearch">Pesquisar</label>
+                    <div class="abbreviation">
+                        <input type="text"
+                        name="search"
+                        id="inSearch"
+                        placeholder="Buscar..."
+                        title="Busque a tarefa que deseja"
+                        required minlength="1">
+                        <button id="btnDelete" type="submit">
+                            <i class="fa-solid fa-delete-left"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-select">
+                    <label for="inFilter">Filtrar</label>
+                    <select name="filter" id="inFilter">
+                        <option value="All">Todos</option>
+                        <option value="Done">Feitos</option>
+                        <option value="Todo">A fazer</option>
+                    </select>
+                </div>
+            </div>
+            <div class="all-task">
+            </div>
+        </section>
+    </main>
+</body>
+</html>

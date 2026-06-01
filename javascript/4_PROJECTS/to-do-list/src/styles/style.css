@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Tahoma, sans-serif;
+    background: url('../assets/bg.jpg') no-repeat center/cover fixed;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 0 1rem;
+}
+
+.header-container h1 { font-size: 2.5rem; }
+
+.container-features {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #808080a6;
+}
+
+.box-task,
+.box-filter,
+.box-select {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 1rem;
+    flex: 1 1 auto;
+}
+
+.box-filters {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #808080a6;
+}
+
+.box-task { border-bottom: 1px solid #808080a6; }
+.box-select {
+    height: 60%;
+    border-left: 1px solid #808080a6;
+}
+
+label { 
+    font-weight: bold; 
+    font-size: 1.1rem;
+}
+
+input#inTask {
+    width: 100%;
+    max-width: 230px;
+    padding: 0.6rem;
+}
+
+input#inSearch {
+    width: 100%;
+    padding: 0.6rem;
+}
+
+select#inFilter { padding: 0.6rem; }
+
+.abbreviation {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.box-task button,
+.box-filter button,
+.task-user button { 
+    padding: 0.6rem 0.8rem; 
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.all-task {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid #808080a6;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+span.text-task { width: 80%; }
+
+.box-btn {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.checked {
+    text-decoration: line-through;
+    color: #ffffff;
+    font-style: italic;
+    background-color: #385268;
+}
