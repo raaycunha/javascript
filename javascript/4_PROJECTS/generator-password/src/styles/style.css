@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #DF09F4, #5065F8 60%);
+}
+
+.main-container {
+    display: flex;
+    margin: 1rem;
+    width: 60%;
+}
+
+.card-welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #ffffff;
+    background: url('../assets/bg-form.jpg') center/cover;
+    padding: 1rem;
+    width: 50%;
+    background-color: #000000;
+    text-shadow: 1px 1px 5px black;
+    box-shadow: inset -2px 0px 5px #1101128c;
+    opacity: 0.7;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2.5rem;
+    width: 50%;
+    background-color: #fafafa;
+}
+
+.title-form {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.about-form {
+    text-align: center;
+    color: #8f8f8f;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+#frm {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.box-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.box-input.pass > span { 
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #8f8f8f;
+}
+
+.box-pass {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    border: 1px solid #0091ff;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    color: #0091ff;
+}
+
+#newPass {
+    display: block;
+    font-size: 1.2rem;
+    color: black;
+}
+
+
+#btnPass {
+    border: none;
+    background-color: #fafafa;
+    font-size: 1rem;
+    color: #0091ff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btnPass:hover { text-decoration: underline; }
+
+#frm label {
+    font-weight: bold;
+}
+
+#frm input {
+    background-color: #fafafa;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 1rem 0;
+    font-size: 1rem;
+}
+
+#frm input:focus {
+    outline: none;
+    border-bottom: 2px solid gray;
+}
+
+#btnSign {
+    width: 100%;
+    max-width: 9rem;
+    padding: 1rem;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    color: white;
+    background-color: #01a101ae;
+    align-self: flex-end;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+#btnSign:hover {
+    opacity: 0.8;
+    transform: scale(1.01);
+}

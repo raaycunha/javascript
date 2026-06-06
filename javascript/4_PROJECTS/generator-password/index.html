@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senha</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <main class="main-container">
+        <section class="card-welcome">
+            <h1>Seja bem-vindo!</h1>
+        </section>
+        <section class="container-form">
+            <h2 class="title-form">Crie sua conta</h2>
+            <p class="about-form">Registre-se para utilizar todas as funcionalidades do sistema</p>
+            <form id="frm">
+                <div class="box-input">
+                    <label for="inName">Nome</label>
+                    <input type="text" 
+                    name="nameUser" 
+                    id="inName"
+                    placeholder="Digite seu nome"
+                    title="Digite seu nome"
+                    minlength="1"
+                    required maxlength="15">
+                </div>
+                <div class="box-input">
+                    <label for="inEmail">E-mail</label>
+                    <input type="email" 
+                    name="emailUser" 
+                    id="inEmail"
+                    placeholder="Digite seu e-mail"
+                    title="Digite seu e-mail"
+                    required minlength="1">
+                </div>
+                <div class="box-input pass">
+                    <label for="inPass">Senha</label>
+                    <input type="password" 
+                    name="passUser" 
+                    id="inPass"
+                    placeholder="Digite a sua senha"
+                    title="Digite a sua senha"
+                    required minlength="1">
+                    <span>Quer ajuda para criar uma senha segura? <a id="btnPass">Clique aqui.</a></span>
+                    <div class="box-pass">Aqui está sua senha: <span id="newPass"></span></div>
+                </div>
+                <div class="box-input">
+                    <label for="inPassConfirm">Confirmação de Senha</label>
+                    <input type="password" 
+                    name="passConfirm" 
+                    id="inPassConfirm"
+                    placeholder="Confirme a sua senha"
+                    title="Confirme a sua senha"
+                    required minlength="1">
+                </div>
+                <button id="btnSign" type="submit">Cadastrar-se</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
