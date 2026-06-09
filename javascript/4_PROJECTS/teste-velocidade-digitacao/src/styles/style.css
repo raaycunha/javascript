@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.instrution {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+#textForUser {
+    font-size: 1.2rem;
+    background-color: #f3f3f3;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#entry {
+    width: 100%;
+    padding: .8rem;
+    margin-bottom: 1rem;
+}
+
+#boxRes {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+#history {
+    text-align: left;
+    margin: 1rem;
+}
+
+button {
+    font-size: 1rem;
+    padding: .6rem 1.2rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#btnTheme {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+.light {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.dark {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.dark #textForUser {
+    color: #333;
+}
