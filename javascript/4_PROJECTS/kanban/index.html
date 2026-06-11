@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <script src="src/js/script.js" defer></script>
+</head>
+<body>
+    <header class="header-container">
+        <h1>Kanban</h1>
+    </header>
+    <section class="box-input">
+        <label for="inTask">Crie uma nova tarefa:</label>
+        <input type="text" 
+        name="task" id="inTask"
+        placeholder="Digite sua tarefa..."
+        title="Digite sua tarefa"
+        required minlength="1">
+        <button id="btnCreate">Criar</button>
+    </section>
+    <section class="container-kanban">
+        <div class="box-kanban">
+            <h2>Para fazer</h2>
+            <div class="box-task todo" data-column="todo">
+            </div>
+        </div>
+        <div class="box-kanban">
+            <h2>Fazendo</h2>
+            <div class="box-task doing" data-column="doing">
+            </div>
+        </div>
+        <div class="box-kanban">
+            <h2>Prontas</h2>
+            <div class="box-task done" data-column="done">
+            </div>
+        </div>
+    </section>
+</body>
+</html>
